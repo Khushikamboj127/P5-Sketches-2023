@@ -1,17 +1,30 @@
-function setup() {
-    createCanvas(900, 900);
-  }
-  
-  function draw() {
-    background(255);
-    fill(mouseX/3, mouseY/3, 200);
-  
-    quad(250, 100, 225, 325, 175, 325, 200, 100);
-    quad(400, 100, 425, 325, 475, 325, 450, 100);
-    rect(299, 325, 50, 180);
-    rect(225, 325, 200, 50);
-  }
+let canvasWidth = 900;
+let canvasHeight = 900;
 
-function mousePressed() {
-    saveCanvas(c, "03.15", "png")
+function setup() {
+  createCanvas(canvasWidth, canvasHeight);
+  background(255);
 }
+
+function draw() {
+  translate(width/2, height/2);
+  strokeWeight(3);
+  stroke(0);
+  
+
+  line(0, 350, 0, 50); 
+  line(0, 200, -150, 0); 
+  line(0, 200, 150, 0); 
+
+
+  noStroke();
+  fill(255, 0, 0);
+  circle(0, 350, 50);
+  fill(0, 255, 0);
+  circle(-150, 0, 50);
+  fill(0, 0, 255);
+  circle(150, 0, 50); 
+
+  rotate(frameCount / 100.0);
+}
+

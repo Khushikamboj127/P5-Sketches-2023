@@ -1,36 +1,30 @@
-let c; 
+let x = 0;
+let y = 0;
+let angle = 0;
+let speed = 0.05;
 
 function setup() {
-    c = createCanvas(1000, 1000)
-    background(230)
-
-    line(300, 200, 80, 80)
-
-
-
-    //rect(100, 100, 100, 250)
-    //rect(215, 130, 100, 250)
-    //rect(330, 100, 100, 250)
-    //rect(445, 130, 100, 250)
-
-    //ellips(400, 200, 500)
-
-   
+  createCanvas(900, 900);
 }
 
 function draw() {
+  background(255);
 
-    
-    //background(255) //0 is black and 255 is white. look at p5 website for code references.
+  stroke(0);
+  strokeWeight(5);
+  line(225 + x, 325 + y, 175 + x, 100 + y);
+  line(225 + x, 325 + y, 275 + x, 100 + y);
+  line(225 + x, 325 + y, 225 + x, 505 + y);
+  rect(200 + x, 505 + y, 50, 50);
 
-    //noFill()
-    //strokeWeight(10)
-    //stroke(mouseX, mouseY, 0)
-    
-    //rect(mouseX, mouseY, 100, 250)
-    //rect(50, 50, mouseX, mouseY)
+  x += cos(angle) * 5;
+  y += sin(angle) * 5;
+
+  angle += speed;
 }
 
 function mousePressed() {
-    saveCanvas(c, "03.15", "png")
+  x = 0;
+  y = 0;
+  angle = 0;
 }

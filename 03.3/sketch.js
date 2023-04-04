@@ -1,42 +1,33 @@
-let c; 
+let ySize = 100;
+let yColor = [255, 0, 0];
 
 function setup() {
-    c = createCanvas(800, 750)
-    background(0)
-
-
+  createCanvas(900, 900);
 }
 
 function draw() {
-
-    rect(250, 200, 40, 80)
-    rect(210, 200, 40, 80)
-    rect(290, 280, 40, 80)
-    rect(250, 280, 40, 80)
-    rect(330, 360, 40, 80)
-    rect(290, 360, 40, 80)
-
-    rect(370, 360, 40, 80)
-    rect(410, 360, 40, 80)
-    rect(410, 280, 40, 80)
-    rect(450, 280, 40, 80)
-    rect(450, 200, 40, 80)
-    rect(490, 200, 40, 80)
-
-    rect(330, 440, 40, 80)
-    rect(330, 520, 40, 80)
-    rect(370, 440, 40, 80)
-    rect(370, 520, 40, 80)
-
-    noFill()
-    strokeWeight(40)
-    stroke(mouseX, mouseY, 10, 10)
-    
-  
+  background(255);
+  noStroke();
+  fill(yColor);
+  drawY(width/2, height/2, ySize);
 }
 
-
+function drawY(x, y, size) {
+  rect(x-size/2, y-size, size/3, size); 
+  rect(x+size/6, y-size/2, size/3, size/2); 
+  rect(x-size/4, y-size/4, size/2, size/4); 
+  rect(x-size/6, y, size/3, size); 
+}
 
 function mousePressed() {
-    saveCanvas(c, "03.15", "png")
+  yColor = [random(255), random(255), random(255)];
 }
+
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    ySize += 10;
+  } else if (keyCode === DOWN_ARROW) {
+    ySize -= 10;
+  }
+}
+

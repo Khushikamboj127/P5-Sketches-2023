@@ -1,43 +1,52 @@
 let angle = 0;
-let noiseScale = 0.01;
-let ySize = 200;
 
 function setup() {
-  createCanvas(900, 900);
+  createCanvas(900, 900, WEBGL);
   colorMode(HSB, 360, 100, 100);
 }
 
 function draw() {
- 
-  for (let y = 0; y < height; y++) {
-    let hue = map(y, 0, height, 0, 360);
-    let saturation = 100;
-    let brightness = map(y, 0, height, 100, 0);
-    stroke(hue, saturation, brightness);
-    line(0, y, width, y);
+  background(0);
+
+  // Draw the noisy background
+  for (let x = 0; x < width; x += 10) {
+    for (let y = 0; y < height; y += 10) {
+      let noiseVal = noise(x * 0.01, y * 0.01, frameCount * 0.01);
+      let c = color(255 * noiseVal);
+      stroke(c);
+      strokeWeight(2);
+      point(x, y);
+    }
   }
 
-  
-  translate(width / 2, height / 2);
-  rotate(angle);
-  angle += 0.005;
+  rotateY(angle);
+  angle += 0.01;
 
   let hue = map(mouseX, 0, width, 0, 360);
   let saturation = 100;
   let brightness = 100;
   fill(hue, saturation, brightness);
-  noStroke();
 
-  quad(-ySize/2, -ySize, -ySize/2, 0, -ySize*0.8, 0, -ySize*0.8, -ySize/2);
-  quad(ySize/2, -ySize, ySize/2, 0, ySize*0.8, 0, ySize*0.8, -ySize/2);
-  rect(-ySize/4, 0, ySize/2, ySize*0.8);
-  rect(-ySize/2, -ySize/4, ySize, ySize/2);
+  push();
+  translate(-150, 0, 0);
+  box(50, 400, 50);
+  pop();
 
+  push();
+  translate(150, 0, 0);
+  box(50, 400, 50);
+  pop();
 
-  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
-    let newSize = map(mouseY, 0, height, 100, 400);
-    ySize = lerp(ySize, newSize, 0.1);
-  }
+  push();
+  translate(0, 200, 0);
+  rotateX(PI/4);
+  box(300, 50, 50);
+  pop();
+
+  push();
+  translate(0, 275, 0);
+  box(50, 200, 50);
+  pop();
 }
 
 

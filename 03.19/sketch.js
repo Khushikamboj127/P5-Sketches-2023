@@ -1,36 +1,56 @@
-let c; 
+let angle = 0;
+let ySize;
+let yColor;
 
 function setup() {
-    c = createCanvas(1000, 1000)
-    background(230)
-
-    line(300, 200, 80, 80)
-
-
-
-    //rect(100, 100, 100, 250)
-    //rect(215, 130, 100, 250)
-    //rect(330, 100, 100, 250)
-    //rect(445, 130, 100, 250)
-
-    //ellips(400, 200, 500)
-
-   
+  createCanvas(900, 900, WEBGL);
+  ySize = height * 0.4;
+  yColor = color(255, 0, 0);
 }
 
 function draw() {
-
-    
-    //background(255) //0 is black and 255 is white. look at p5 website for code references.
-
-    //noFill()
-    //strokeWeight(10)
-    //stroke(mouseX, mouseY, 0)
-    
-    //rect(mouseX, mouseY, 100, 250)
-    //rect(50, 50, mouseX, mouseY)
+  background(255);
+  noStroke();
+  fill(yColor);
+  rotateX(angle);
+  rotateY(angle*1.3);
+  drawY(0, 0, ySize);
+  angle += 0.02;
 }
 
+function drawY(x, y, size) {
+  push();
+  translate(-150, 0, 0);
+  box(50, 400, 50);
+  pop();
+
+  push();
+  translate(150, 0, 0);
+  box(50, 400, 50);
+  pop();
+
+  push();
+  translate(0, 200, 0);
+  rotateX(PI/4);
+  box(300, 50, 50);
+  pop();
+
+  push();
+  translate(0, 275, 0);
+  box(50, 200, 50);
+  pop();
+  
+}
+
+
 function mousePressed() {
-    saveCanvas(c, "03.15", "png")
+  yColor = color(random(255), random(255), random(255));
+}
+
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    ySize += 10;
+  } else if (keyCode === DOWN_ARROW) {
+    ySize -= 10;
+  }
 }

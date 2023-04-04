@@ -1,36 +1,39 @@
-let c; 
+let angle = 0;
 
 function setup() {
-    c = createCanvas(1000, 1000)
-    background(230)
-
-    line(300, 200, 80, 80)
-
-
-
-    //rect(100, 100, 100, 250)
-    //rect(215, 130, 100, 250)
-    //rect(330, 100, 100, 250)
-    //rect(445, 130, 100, 250)
-
-    //ellips(400, 200, 500)
-
-   
+  createCanvas(900, 900, WEBGL);
 }
 
 function draw() {
+  background(220);
 
-    
-    //background(255) //0 is black and 255 is white. look at p5 website for code references.
+  rotateX(angle);
+  rotateY(angle * 1.3);
+  rotateZ(angle * 0.7);
 
-    //noFill()
-    //strokeWeight(10)
-    //stroke(mouseX, mouseY, 0)
-    
-    //rect(mouseX, mouseY, 100, 250)
-    //rect(50, 50, mouseX, mouseY)
+  fill(200, 200, 200);
+  stroke(0);
+  strokeWeight(2);
+
+
+  push();
+  translate(0, 200, 0);
+  box(100, 200, 100);
+  pop();
+
+ 
+  push();
+  translate(100, 0, 0);
+  rotateZ(PI / 4);
+  box(100, 200, 100);
+  pop();
+
+  push();
+  translate(-100, 0, 0);
+  rotateZ(-PI / 4);
+  box(100, 200, 100);
+  pop();
+
+  angle += 0.02;
 }
 
-function mousePressed() {
-    saveCanvas(c, "03.15", "png")
-}

@@ -1,39 +1,42 @@
-let angle = 0;
+let c; 
 
 function setup() {
-  createCanvas(900, 900, WEBGL);
+    c = createCanvas(800, 750)
+    background(0)
+
+
 }
 
 function draw() {
-  background(255);
-  rotateY(angle);
-  angle += 0.01;
 
-  noStroke();
-  fill(0);
+    rect(250, 200, 40, 80)
+    rect(210, 200, 40, 80)
+    rect(290, 280, 40, 80)
+    rect(250, 280, 40, 80)
+    rect(330, 360, 40, 80)
+    rect(290, 360, 40, 80)
+
+    rect(370, 360, 40, 80)
+    rect(410, 360, 40, 80)
+    rect(410, 280, 40, 80)
+    rect(450, 280, 40, 80)
+    rect(450, 200, 40, 80)
+    rect(490, 200, 40, 80)
+
+    rect(330, 440, 40, 80)
+    rect(330, 520, 40, 80)
+    rect(370, 440, 40, 80)
+    rect(370, 520, 40, 80)
+
+    noFill()
+    strokeWeight(40)
+    stroke(mouseX, mouseY, 10, 10)
+    
+  
+}
 
 
-  push();
-  translate(-150, 0, 0);
-  box(50, 400, 50);
-  pop();
 
-
-  push();
-  translate(150, 0, 0);
-  box(50, 400, 50);
-  pop();
-
-
-  push();
-  translate(0, 200, 0);
-  rotateX(PI/4);
-  box(300, 50, 50);
-  pop();
-
-  push();
-  translate(0, 320, 0);
-  box(50, 200, 50);
-  pop();
-
+function mousePressed() {
+    saveCanvas(c, "03.15", "png")
 }
